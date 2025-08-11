@@ -1,41 +1,50 @@
 #include <iostream>
-#include <unordered_map>
 #include <algorithm>
+#include <unordered_map>
 using namespace std;
 
-void calculate3Sum(int array[], int size, int target)
+int threeSum(int nums[], int size, int target)
 {
+    sort(nums, nums + size);
+    int *firstPointer = nums;
+    int *LeftPointer = &nums[1];
+    int *RightPointer = &nums[size - 1];
+    int closestSum = *firstPointer + *LeftPointer + *RightPointer;
 
-    sort(array, array + size);
-    int *firstPointer = &array[1];       // initialized with first index
-    int *lastPointer = &array[size - 1]; // initialized with last index
-    int fixed = 0;
-    while (lastPointer > firstPointer)
+    for (int i = 0; i < size - 2; i++)
     {
-        int i = 0;
-        fixed = array[i];
-        int sum = *firstPointer + *lastPointer;
-        int finalsum = fixed + sum;
-        // int finalanswer1 = finalsum - 1;
-        // int finalanswer2 = finalanswer1 + 1;
-        if (finalsum == target - 1 || finalsum == target + 1 || finalsum == target)
+        firstPointer = &nums[i];
+        LeftPointer = &nums[i + 1];
+        RightPointer = &nums[size - 1];
+
+        while (LeftPointer < RightPointer)
         {
-            cout << finalsum;
+            int sum = *firstPointer + *LeftPointer + *RightPointer;
+            if (abs(sum - target) < abs(closestSum - target))
+            {
+                closestSum = sum;
+            }
+
+            // here seperately decide to which pointer to move
+            if (sum < target)
+            {
+                LeftPointer++;
+            }
+            else
+            {
+                RightPointer--;
+            }
         }
-        else
-        {
-            firstPointer++;
-            lastPointer--;
-        }
-        i++;
     }
+    return closestSum;
 }
 
 int main()
 {
-    int array[] = {-1, 2, 1, -4};
+    int nums[] = {-1, 2, 1, -4};
+    int size = sizeof(nums) / sizeof(nums[0]);
     int target = 1;
-    int size = sizeof(array) / sizeof(array[0]);
-    calculate3Sum(array, size, target);
+    int const answer = threeSum(nums, size, target);
+    cout << answer << endl;
     return 0;
 }
