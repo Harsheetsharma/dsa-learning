@@ -7,23 +7,16 @@ using namespace std;
 void twosum(int nums[], int size, int target)
 {
     sort(nums, nums + size);
-    int *startPointer = nums;
-    int *lastPointer = &nums[size - 1];
-    while (lastPointer > startPointer)
+
+    for (int i = 0; i < size; i++)
     {
-        int sum = *startPointer + *lastPointer;
-        if (sum == target)
+        int firstpointer = nums[i];
+        int lastpointer = size - i;
+
+        if (firstpointer + lastpointer == target)
         {
-            cout << *startPointer << "+" << lastPointer << "=" << target;
+            cout << firstpointer << "+" << lastpointer << "=" << target;
             break;
-        }
-        else if (sum > target)
-        {
-            lastPointer--;
-        }
-        else
-        {
-            startPointer++;
         }
     }
 }
