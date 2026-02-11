@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+// program to find the number at which space;
 int findOccurance(int array[], int target, int size)
 {
     for (int i = 0; i < size; i++)

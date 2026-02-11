@@ -4,22 +4,22 @@
 #include <algorithm>
 using namespace std;
 
-void twosum(int nums[], int size, int target)
-{
-    sort(nums, nums + size);
+// void twosum(int nums[], int size, int target)
+// {
+//     sort(nums, nums + size);
 
-    for (int i = 0; i < size; i++)
-    {
-        int firstpointer = nums[i];
-        int lastpointer = size - i;
+//     for (int i = 0; i < size; i++)
+//     {
+//         int firstpointer = nums[i];
+//         int lastpointer = size - i;
 
-        if (firstpointer + lastpointer == target)
-        {
-            cout << firstpointer << "+" << lastpointer << "=" << target;
-            break;
-        }
-    }
-}
+//         if (firstpointer + lastpointer == target)
+//         {
+//             cout << firstpointer << "+" << lastpointer << "=" << target;
+//             break;
+//         }
+//     }
+// }
 
 // void twosum(int num[], int size, int target)
 // {
@@ -43,14 +43,14 @@ void twosum(int nums[], int size, int target)
 // }
 // }
 
-int main()
-{
-    // Write C++ code here
-    int nums[] = {2, 5, 7, 5, 12};
-    int target = 9;
-    int size = sizeof(nums) / sizeof(nums[0]);
-    twosum(nums, size, target);
-}
+// int main()
+// {
+//     // Write C++ code here
+//     int nums[] = {2, 5, 7, 5, 12};
+//     int target = 9;
+//     int size = sizeof(nums) / sizeof(nums[0]);
+//     twosum(nums, size, target);
+// }
 
 // // sort(nums, nums + size);
 //     int *startPointer = nums;
@@ -73,3 +73,42 @@ int main()
 //             startPointer++;
 //         }
 //     }
+
+int findRepeat(int nums[], int size)
+{
+    sort(nums, nums + size);
+
+    for (int i = 0; i < size - 1; i++)
+    {
+        int *left = &nums[i];
+        int *right = &nums[i + 1];
+        if (*left == *right)
+        {
+            return nums[i];
+        }
+    }
+}
+
+// int findRepeat(int nums[], int size)
+// {
+//     for (int i = 0; i <= size; i++)
+//     {
+//         for (int j = 0; j <= size; j++)
+//         {
+//             if (nums[i] == nums[j])
+//             {
+//                 return nums[i];
+//             }
+//         }
+//     }
+// }
+
+int main()
+{
+
+    // write c++ code here
+    int nums[] = {5, 1, 3, 2, 5};
+    int size = sizeof(nums) / sizeof(nums[0]);
+    int answer = findRepeat(nums, size);
+    cout << "repeated is " << answer;
+}

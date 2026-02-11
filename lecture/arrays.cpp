@@ -2,14 +2,14 @@
 #include <climits>
 using namespace std;
 
-void chageArray(int arr[], int size)
-{
-    cout << "in function \n";
-    for (int i = 0; i < size; i++)
-    {
-        arr[i] = 2 * arr[i];
-    }
-}
+// void chageArray(int arr[], int size)
+// {
+//     cout << "in function \n";
+//     for (int i = 0; i < size; i++)
+//     {
+//         arr[i] = 2 * arr[i];
+//     }
+// }
 
 int main()
 {
@@ -82,5 +82,5 @@ int main()
     //     }
     // }
 
-        return 0;
+    return 0;
 }
