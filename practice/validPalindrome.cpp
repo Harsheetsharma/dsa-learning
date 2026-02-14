@@ -48,7 +48,7 @@ void validPalindrome(string str)
 }
 int main()
 {
-    string str = "aba";
+    string str = "abasc";
     validPalindrome(str);
     return 0;
 }
