@@ -14,12 +14,23 @@ void squareOfSortedArray(int nums[], int size)
 
     for (int i = 0; i < size; i++)
     {
-        nums[i] *= nums[i];
+        if (nums[i] < 0)
+        {
+            nums[i] = -(nums[i]);
+        }
     }
 
-    sort(nums, size + nums);
+    sort(nums, nums + size);
 
-        for (int i = 0; i < size; i++)
+    int *first = nums;
+    int *last = &nums[size - 1];
+    while (first <= last)
+    {
+        *first *= *first;
+
+        first++;
+    }
+    for (int i = 0; i < size; i++)
     {
         cout << nums[i] << " ";
     }
