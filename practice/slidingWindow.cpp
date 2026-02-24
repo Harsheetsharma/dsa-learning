@@ -18,33 +18,27 @@ void Findmaximumsumsubarrayofsize(int nums[], int size)
     int *second = &nums[1];
     int *third = &nums[2];
     int *last = &nums[size - 1];
-
     int oldSum = *first + *second + *third;
-    int maxSum = oldSum;
 
-    // Print first window
-    cout << "[" << *first << "," << *second << "," << *third << "] = " << oldSum << endl;
-
+    int maxsum = oldSum;
+    cout << "firstSum = " << "[" << *first << "," << *second << "," << *third << "] = " << oldSum << endl;
     while (third < last)
     {
-        int newSum = oldSum - *first + *(third + 1);
 
-        // Move window FIRST
+        int newSum = oldSum - *first + *(third + 1);
         first++;
         second++;
         third++;
 
-        cout << "[" << *first << "," << *second << "," << *third << "] = " << newSum << endl;
-
-        if (newSum > maxSum)
+        cout << " " << "[" << *first << "," << *second << "," << *third << "]" << "= " << newSum << endl;
+        if (newSum > maxsum)
         {
-            maxSum = newSum;
-        }
 
+            maxsum = newSum;
+        }
         oldSum = newSum;
     }
-
-    cout << "Max Sum = " << maxSum << endl;
+    cout << "maxsum is =" << maxsum;
 }
 
 int main()
