@@ -1,52 +1,82 @@
+// #include <iostream>
+// #include <algorithm>
+// #include <unordered_map>
+// #include <string>
+// using namespace std;
+
+// void logestsubstringnorepeat(string name)
+// {
+//     int left = 0;
+//     int right = 0;
+
+//     int maxLen = 0;
+//     int startIndex = 0;
+//     while (right < name.length())
+//     {
+//         bool found = false;
+//         for (int i = left; i < right; i++)
+//         {
+//             if (name[i] == name[right])
+//             {
+//                 found = true;
+//                 break;
+//             }
+//         }
+//         if (found)
+//         {
+//             left++;
+//             continue;
+//         }
+//         else
+//         {
+//             if (right - left + 1 > maxLen)
+//             {
+//                 maxLen = right - left + 1;
+//                 startIndex = left;
+//             }
+
+//             right++;
+//         }
+//     }
+//     for (int i = startIndex; i < maxLen + startIndex; i++)
+//     {
+//         cout << name[i];
+//     }
+// }
+
+// int main()
+// {
+//     string name = "abbacbrfh";
+//     logestsubstringnorepeat(name);
+//     return 0;
+// }
+
 #include <iostream>
-#include <algorithm>
-#include <unordered_map>
-#include <string>
+#include <unordered_set>
 using namespace std;
 
-void logestsubstringnorepeat(string name)
+int longestSubstring(string s)
 {
     int left = 0;
-    int right = 0;
+    int maxlen = 0;
+    unordered_set<char> window;
 
-    int maxLen = 0;
-    int startIndex = 0;
-    while (right < name.length())
+    for (int right = 0; right < s.length(); right++)
     {
-        bool found = false;
-        for (int i = left; i < right; i++)
+        while (window.count(s[right]))
         {
-            if (name[i] == name[right])
-            {
-                found = true;
-                break;
-            }
-        }
-        if (found)
-        {
+            window.erase(s[right]);
             left++;
-            continue;
         }
-        else
-        {
-            if (right - left + 1 > maxLen)
-            {
-                maxLen = right - left + 1;
-                startIndex = left;
-            }
+        window.insert(s[right]);
 
-            right++;
-        }
+        maxlen = max(maxlen, right - left + 1);
     }
-    for (int i = startIndex; i < maxLen + startIndex; i++)
-    {
-        cout << name[i];
-    }
+    return maxlen;
 }
 
 int main()
 {
-    string name = "abbacbrfh";
-    logestsubstringnorepeat(name);
-    return 0;
+    string s = "abbacbrfh";
+    cout << longestSubstring(s);
 }
