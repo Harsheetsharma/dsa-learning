@@ -65,11 +65,11 @@ int longestSubstring(string s)
     {
         while (window.count(s[right]))
         {
-            window.erase(s[right]);
+            window.erase(s[left]);
             left++;
         }
         window.insert(s[right]);
-
+        // cout << s[right];
         maxlen = max(maxlen, right - left + 1);
     }
     return maxlen;
@@ -77,6 +77,6 @@ int longestSubstring(string s)
 
 int main()
 {
-    string s = "abbacbrfh";
+    string s = "abbaabrafahca";
     cout << longestSubstring(s);
 }
