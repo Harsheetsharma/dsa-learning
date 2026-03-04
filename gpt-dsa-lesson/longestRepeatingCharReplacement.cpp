@@ -22,19 +22,17 @@ void longestRepeatcharReplacement(string s, int k)
             window[s[left]]--;
             left++;
         }
-        for (auto &a : window)
-        {
-            if (a.second <= 1) // means if frequency is greater than 1 then repeated
-            {
-                s[left] = a.first;
-            }
-        }
+        // for (auto &a : window)
+        // {
+        //     if (a.second <= 1) // means if frequency is greater than 1 then repeated
+        //     {
+        //         s[left] = a.first;
+        //     }
+        // }
         maxlength = max(maxlength, right - left + 1);
     }
 
-    cout << "hello " << maxlength;
-    cout << endl
-         << maxfreq;
+    cout << "maxlength is = " << maxlength;
 }
 
 int main()
