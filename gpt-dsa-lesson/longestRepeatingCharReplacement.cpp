@@ -50,15 +50,10 @@ int main()
 // We track:
 
 // left
-
 // right
-
 // window
-
 // maxfreq
-
 // window size
-
 // maxlength
 
 // 🔎 Start
