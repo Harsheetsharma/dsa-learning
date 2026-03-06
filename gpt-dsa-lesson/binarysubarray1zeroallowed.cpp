@@ -27,12 +27,13 @@ void binaryarray1zeroallowed(int nums[], int k, int size)
 
     for (int right = 0; right < size; right++)
     {
-        while (window.count(0) && window[0] >= k)
+        window[nums[right]]++;
+
+        while (window.count(0) && window[0] > k)
         {
             window[nums[left]]--;
             left++;
         }
-        window.insert({nums[right]});
 
         maxlength = max(maxlength, right - left + 1);
     }
