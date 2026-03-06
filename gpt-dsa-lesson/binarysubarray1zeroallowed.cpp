@@ -16,6 +16,7 @@ using namespace std;
 // How many zeros are inside?
 // And what should the window do next?
 
+// using hashmap
 void binaryarray1zeroallowed(int nums[], int k, int size)
 
 {
