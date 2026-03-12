@@ -21,7 +21,10 @@ void leetcode325(int nums[], int size, int k)
 
             maxlenth = max(maxlenth, right - window[prefix_sum - k]);
         }
-        window[prefix_sum]++;
+        if (!window.count(prefix_sum - k))
+        {
+            window[prefix_sum] == right;
+        }
     }
     cout << maxlenth;
 }
