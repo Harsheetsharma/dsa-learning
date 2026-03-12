@@ -27,21 +27,19 @@ using namespace std;
 // Answer = 2
 void leetcode560(int nums[], int k, int size)
 {
-    int left = 0;
     unordered_map<int, int> window;
-    int maxfreq = 0;
-    int previous_prefix_sum = 0;
+    int prefix_sum = 0;
     int count = 0;
     window[0] = 1;
     for (int right = 0; right < size; right++)
     {
 
-        previous_prefix_sum += nums[right];
-        if (window.count(previous_prefix_sum - k))
+        prefix_sum += nums[right];
+        if (window.count(prefix_sum - k))
         {
-            count += window[previous_prefix_sum - k];
+            count += window[prefix_sum - k];
         }
-        window[previous_prefix_sum]++;
+        window[prefix_sum]++;
     }
 
     cout << count;
