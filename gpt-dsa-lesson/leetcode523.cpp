@@ -27,7 +27,7 @@ void leetcode523(int nums[], int k, int size)
         }
         else
         {
-            window[remainder]++;
+            window[remainder] = right;
         }
     }
     cout << maxlength;
