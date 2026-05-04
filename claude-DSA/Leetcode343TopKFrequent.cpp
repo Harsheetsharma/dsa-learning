@@ -7,19 +7,35 @@ using namespace std;
 void topKFrequent(int nums[], int size, int k)
 {
     unordered_map<int, int> mp;
-
+    vector<int> arry;
+    int maxfreq = 0;
+    int mostFrequentElement = 0;
     // step1 count freq
     for (int i = 0; i < size; i++)
     {
         mp[nums[i]]++;
-    }
-    for (auto it : mp)
-    {
-        if (it.second >= k)
+        if (mp[nums[i]] > maxfreq)
         {
-            cout << it.first;
+            maxfreq = mp[nums[i]];
+            mostFrequentElement = nums[i];
+        }
+        if (nums[i] != mostFrequentElement)
+        {
+            arry.push_back(nums[i]);
         }
     }
+    unordered_map<int, int> window;
+    int newFreq = 0;
+    for (auto it : arry)
+    {
+        window[it]++;
+        if (window[it] > newFreq)
+        {
+            newFreq = window[it];
+        }
+    }
+    cout << maxfreq << endl;
+    cout << newFreq;
 }
 
 int main()
